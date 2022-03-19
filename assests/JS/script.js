@@ -71,19 +71,20 @@ const MAX_QUESTIONS = 5
 
 startButton.addEventListener("click", startQuiz);
 
-function startQuiz ()
+function startQuiz () {
     questionCounter = 0
     score = 0
     availableQuestions = [...questions];
     getNewQuestion();
     console.log(availableQuestions);
+}
 
-
-function getNewQuestion ()
+function getNewQuestion () {
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQuestion = availableQuestions[questionIndex]
     question.innerText = currentQuestion.question;
+}
 
 function forEach(choice) {
     const number = choice.dataset['number']
@@ -114,23 +115,21 @@ function startTimer() {
 }
 
 
-viewHighScoresEl.addEventListener("click", function)
- {
+viewHighScoresEl.addEventListener ("click",function() {
     var quizUsers ="";
     var highScores = "";
     localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-}
 
-    for (var i=0 < localStorage.length; i++)
+    for (var i=0 < localStorage.length; i++) 
         var checkUserValue = [];
     
     window.alert(highScores);
+})
 
 
-
-submitSocreEl.addEventListener("click",function) {
+submitSocreEl.addEventListener("click",function() {
     var quizLocalStorage = "quiz";
     var quizUsuerDetails ="";
     var value = [];
-}
+})
 startQuiz()
