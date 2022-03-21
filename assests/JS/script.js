@@ -1,9 +1,9 @@
 var questions = document.querySelector (".questions");
 var answers = Array.from(document.querySelectorAll (".answers"));
 var timerElement = document.querySelector(".timer-count");
-var startButton = document.querySelector (".start.button");
-var nextButton = document.querySelector (".start-button");
-var passTest = document.querySelector ("[.pass-test");
+var startButton = document.querySelector (".start-button");
+var nextButton = document.querySelector (".next-button");
+var passTest = document.querySelector (".pass-test");
 var failedTest = document.querySelector (".failed-test");
 var highScores = document.querySelector ("high-scores");
 
@@ -13,6 +13,8 @@ var acceptingAnswers = true;
 var score = 0;
 var availableQuestions = [];
 var questionCounter = 0;
+var startQuiz = {};
+var getNewQuestion = {};
 
 var questions = [
     {
@@ -69,7 +71,7 @@ var questions = [
 
 const MAX_QUESTIONS = 5
 
-startButton.addEventListener("click", startQuiz);
+startButton.addEventListener("click",startQuiz);
 
 function startQuiz () {
     questionCounter = 0
@@ -120,7 +122,7 @@ viewHighScoresEl.addEventListener ("click",function() {
     var highScores = "";
     localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
 
-    for (var i=0 < localStorage.length; i++) 
+    for (var i=0; i < localStorage.length; i++) 
         var checkUserValue = [];
     
     window.alert(highScores);
