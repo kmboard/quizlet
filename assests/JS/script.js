@@ -30,7 +30,7 @@ var questions = [
     },
         {
             question: "What does HTML stand for?",
-            Answer: [
+            answers: [
              'Hyper Text Preprocessor',
             'Hyper Text Markup Language',
              'Hype Test Multiple Language',
@@ -40,7 +40,7 @@ var questions = [
         },
         {
         question: 'Which is the operater to assign a variable?',
-        Answer: [
+        answers: [
             '*',
             '+',
             '=',
@@ -50,7 +50,7 @@ var questions = [
     },
     {
         question: "What company implemented JavaScript language?",
-        Answer: [
+        answers: [
              'Netscape Communitcations Corp',
              'Microsoft',
              'Apple',
@@ -61,7 +61,7 @@ var questions = [
 
         {
             question: 'What does "this" mean in javascript',
-            Answer: [
+            answers: [
                  'the current object',
                  'the previous object',
                 'The variable that contains a value',
@@ -70,7 +70,7 @@ var questions = [
                 correctAnswer: 'the current object',
             },
               
-]
+        ]
 
 const MAX_QUESTIONS = 5
 
@@ -87,6 +87,7 @@ function checkAnswer( ){
     questionCounter++;
     getNewQuestion()
 }
+
 function getNewQuestion () {
     
     currentQuestion = questions[questionCounter]
@@ -95,7 +96,7 @@ function getNewQuestion () {
     questionEl.textContent = currentQuestion.question
     let answers = currentQuestion.answers
     gameEl.innerHTML = ''
-    answers.forEach()(answer => {
+    answers.forEach (answer => {
         let answerEl = document.createElement('div')
         answerEl.setAttribute('class','choice-container justify-content')
         gameEl.appendChild(answerEl)
