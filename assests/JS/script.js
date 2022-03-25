@@ -1,6 +1,6 @@
 var questionEl = document.querySelector ("#questions");
 var answers = Array.from(document.querySelectorAll (".answers"));
-var timerElement = document.querySelector(".timer-count");
+var timerEl = document.querySelector(".timer-count");
 var startBtn = document.querySelector (".start-btn");
 var nextBtn = document.querySelector (".next-btn");
 var passTest = document.querySelector (".pass-test");
@@ -77,8 +77,7 @@ const MAX_QUESTIONS = 5
 
 function startQuiz () {
     questionCounter = 0
-
-    // startTimer();
+    startTimer();
     getNewQuestion();
     console.log(availableQuestions);
 }
@@ -89,7 +88,6 @@ function checkAnswer( ){
 }
 
 function getNewQuestion () {
-    
     currentQuestion = questions[questionCounter]
     questionEl.textContent = ''
     console.log(currentQuestion)
@@ -105,6 +103,8 @@ function getNewQuestion () {
         answerBtn.textContent = answer;
         answerBtn.onclick = checkAnswer;
         answerEl.appendChild(answerBtn)
+
+    
     });
 
 
@@ -122,8 +122,8 @@ var timerCount = 10;
 
 function startTimer() {
     var timerInterval = setInterval(function() {
-        if (timeCount > 1) {
-        timerElement.textContent = timerCount + "time left";
+        if (timerCount > 1) {
+        timerEl.textContent = timerCount + "time left";
         timerCount--;
     } else if (timerCount > 0) {
                 clearInterval(timer);
