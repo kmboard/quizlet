@@ -1,4 +1,4 @@
-var questions = document.querySelector (".questions");
+var questionEl = document.querySelector ("#questions");
 var answers = Array.from(document.querySelectorAll (".answers"));
 var timerElement = document.querySelector(".timer-count");
 var startBtn = document.querySelector (".start-btn");
@@ -7,9 +7,9 @@ var passTest = document.querySelector (".pass-test");
 var failedTest = document.querySelector (".failed-test");
 var highScoresEl = document.querySelector ("high-scores");
 var submitSocreEl = document.querySelector (".submit-scores")
+var gameEl = document.getElementById('game')
 
-
-var currentQuestion = {};
+var currentQuestion;
 var acceptingAnswers = true;
 var score = 0;
 var availableQuestions = [];
@@ -19,84 +19,103 @@ var questionCounter = 0;
 
 var questions = [
     {
-    question: "Where is the correct place to place a javascript tag?",
-    answers: {
-        a: 'body',
-        b: 'header',
-        c: 'dont need one',
-        d: 'both header and body'
-    },
-        correctAnswer: 'D'
+    question: "Which language is not a Javascript frame work?",
+    answers: [
+        'NodeJs',
+        'Python',
+        'Django',
+        'JQuery'
+    ],
+        correctAnswer: 'Django'
     },
         {
-            question: "Is Java Script Case Sensative?",
-            Answer: {
-                a: 'yes',
-                b: 'no',
-            },
-            correctAnswer: 'Yes'
+            question: "What does HTML stand for?",
+            Answer: [
+             'Hyper Text Preprocessor',
+            'Hyper Text Markup Language',
+             'Hype Test Multiple Language',
+            'Hyper Tool Multi Language',
+            ],
+            correctAnswer: 'Hyper Text Markup Language'
         },
         {
         question: 'Which is the operater to assign a variable?',
-        Answer: {
-            a:'*',
-            b:'+',
-            c:'=',
-            d: '/',
-        },
-            correctAnswer: 'C',
+        Answer: [
+            '*',
+            '+',
+            '=',
+            '/',
+         ],
+            correctAnswer: '=',
     },
     {
         question: "What company implemented JavaScript language?",
-        Answer: {
-            a: 'Netscape Communitcations Corp',
-            b: 'Microsoft',
-            c: 'Apple',
-            d: 'Amazon',
-        },
+        Answer: [
+             'Netscape Communitcations Corp',
+             'Microsoft',
+             'Apple',
+             'Amazon',
+    ],
         correctAnswer: 'A',
     },
 
         {
             question: 'What does "this" mean in javascript',
-            Answer: {
-                a: 'the current object',
-                b: 'the previous object',
-                c: 'The variable that contains a value',
-                d: 'None of the above',
-            },
-                correctAnswer: 'A',
+            Answer: [
+                 'the current object',
+                 'the previous object',
+                'The variable that contains a value',
+                 'None of the above',
+            ],
+                correctAnswer: 'the current object',
             },
               
 ]
 
 const MAX_QUESTIONS = 5
 
-startBtn.addEventListener("click",startQuiz);
 
 function startQuiz () {
     questionCounter = 0
-    score = 0
-    availableQuestions = [...questions];
+
+    // startTimer();
     getNewQuestion();
     console.log(availableQuestions);
 }
 
-function getNewQuestion () {
+function checkAnswer( ){
     questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex]
-    questions.innerText = currentQuestion.question;
+    getNewQuestion()
+}
+function getNewQuestion () {
+    
+    currentQuestion = questions[questionCounter]
+    questionEl.textContent = ''
+    console.log(currentQuestion)
+    questionEl.textContent = currentQuestion.question
+    let answers = currentQuestion.answers
+    gameEl.innerHTML = ''
+    answers.forEach()(answer => {
+        let answerEl = document.createElement('div')
+        answerEl.setAttribute('class','choice-container justify-content')
+        gameEl.appendChild(answerEl)
+        let answerBtn = document.createElement('button');
+        answerBtn.setAttribute('class','choice-text justify-content');
+        answerBtn.textContent = answer;
+        answerBtn.onclick = checkAnswer;
+        answerEl.appendChild(answerBtn)
+    });
+
+
+    // questions.innerText = currentQuestion.question;
 }
 
-function forEach(choice) {
-    const number = choice.dataset['number']
-    choice.innerText = currentQuestion['choice' + number]
-}
+// function forEach(choice) {
+//     const number = choice.dataset['number']
+//     choice.innerText = currentQuestion['choice' + number]
+// }
 
-availableQuestions.splice(questions,1)
 
-acceptingAnswers = true
 
 var timerCount = 10;
 
@@ -105,7 +124,7 @@ function startTimer() {
         if (timeCount > 1) {
         timerElement.textContent = timerCount + "time left";
         timerCount--;
-    } else if (isRight && timerCount > 0) {
+    } else if (timerCount > 0) {
                 clearInterval(timer);
                 passTest();
             }
@@ -117,6 +136,7 @@ function startTimer() {
     }, 1000);
 }
 
+startBtn.addEventListener("click",startQuiz);
 
 // highScoresEl.addEventListener ("click",function() {
 //     var quizUsers ="";
@@ -135,5 +155,3 @@ function startTimer() {
 //     var quizUsuerDetails ="";
 //     var value = [];
 // });
-
-startQuiz()
