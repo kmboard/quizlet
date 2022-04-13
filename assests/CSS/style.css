@@ -1,4 +1,4 @@
-* {
+* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -68,35 +68,6 @@ h1 {
 }
 
 .btn:hover {
-    cursor: pointer;
-    box-shadow: blue 0 0.2rem 0.2rem;
-    transform: scale(1.02);
-    transition: transform 100ms;
-}
-
-.choice-container {
-    display: flex;
-    width: 35%;
-    margin-bottom: .5rem;
-    font-size: 20px;
-    border: 1px blue;
-    background-color: white;
-    align-items: center;
-}
-
-.choice-prefix {
-    padding: 3px 3px;
-    margin: .4rem;
-    background-color: lightskyblue;
-    color: white;
-}
-
-.choice-text {
-    padding: 2 rem;
-    width: 100;
-}
-
-.choice-container:hover {
     cursor: pointer;
     box-shadow: blue 0 0.2rem 0.2rem;
     transform: scale(1.02);

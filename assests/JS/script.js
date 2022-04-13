@@ -1,21 +1,22 @@
 var questionEl = document.querySelector ("#questions");
 var answers = Array.from(document.querySelectorAll (".answers"));
 var timerEl = document.querySelector(".timer-count");
-var startBtn = document.querySelector (".start-btn");
+var startBtn = document.querySelector ("#start-btn");
 var nextBtn = document.querySelector (".next-btn");
 var passTest = document.querySelector (".pass-test");
 var failedTest = document.querySelector (".failed-test");
 var highScoresEl = document.querySelector ("high-scores");
-var submitSocreEl = document.querySelector (".submit-scores")
+var submitSocreEl = document.querySelector ("#submit-scores")
 var gameEl = document.getElementById('game')
+var saveBtn = document.getElementById('save-btn')
+var initialsInput = document.getElementById('initials-input')
+
 
 var currentQuestion;
 var acceptingAnswers = true;
 var score = 0;
 var availableQuestions = [];
 var questionCounter = 0;
-// var startQuiz = {};
-// var getNewQuestion = {};
 
 var questions = [
     {
@@ -72,7 +73,7 @@ var questions = [
               
         ]
 
-const MAX_QUESTIONS = 5
+const MAX_QUESTIONS = questions.length -1
 
 
 function startQuiz () {
@@ -84,7 +85,11 @@ function startQuiz () {
 
 function checkAnswer( ){
     questionCounter++;
-    getNewQuestion()
+    if (questionCounter <= MAX_QUESTIONS) {
+        getNewQuestion()
+    };
+
+
 }
 
 function getNewQuestion () {
@@ -106,19 +111,9 @@ function getNewQuestion () {
 
     
     });
-
-
-    // questions.innerText = currentQuestion.question;
 }
 
-// function forEach(choice) {
-//     const number = choice.dataset['number']
-//     choice.innerText = currentQuestion['choice' + number]
-// }
-
-
-
-var timerCount = 10;
+var timerCount = 100;
 
 function startTimer() {
     var timerInterval = setInterval(function() {
@@ -126,7 +121,7 @@ function startTimer() {
         timerEl.textContent = timerCount + "time left";
         timerCount--;
     } else if (timerCount > 0) {
-                clearInterval(timer);
+                clearInterval(timerInterval);
                 passTest();
             }
     else if (timerCount ===0) {
@@ -136,10 +131,8 @@ function startTimer() {
 
     }, 1000);
 }
-
-startBtn.addEventListener("click",startQuiz);
-
-// highScoresEl.addEventListener ("click",function() {
+// function passTest () {
+//     highScoresEl.addEventListener
 //     var quizUsers ="";
 //     var highScores = "";
 //     localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
@@ -148,11 +141,22 @@ startBtn.addEventListener("click",startQuiz);
 //         var checkUserValue = [];
     
 //     window.alert(highScores);
-// });
+// }
+function saveScore(){
+    // get the value from initials input
+    var initials = initialsInput.value.trim();
+    var score = 100;
+    // get the value of the score
+    // put scores into newplayer object
+    var newPlayer = {initials , score}
+    var savedScores = JSON.parse(localStorage.getItem('scores')) || [] ; 
 
-
-// submitSocreEl.addEventListener("click",function() {
-//     var quizLocalStorage = "quiz";
-//     var quizUsuerDetails ="";
-//     var value = [];
-// });
+    savedScores.push(newPlayer)
+    console.log(savedScores)
+    localStorage.setItem('scores', JSON.stringify(savedScores))
+    // create an array for the newplayer to go into or use already stored score
+    // push updated array to local storage as JSON
+    
+}
+startBtn.addEventListener("click", startQuiz);
+saveBtn.addEventListener('click', saveScore)
