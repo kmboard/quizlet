@@ -2,14 +2,14 @@ var questionEl = document.querySelector ("#questions");
 var answers = Array.from(document.querySelectorAll (".answers"));
 var timerEl = document.querySelector(".timer-count");
 var startBtn = document.querySelector ("#start-btn");
-var nextBtn = document.querySelector (".next-btn");
-var passTest = document.querySelector (".pass-test");
+var useranswers = answers.querySelector.clicked.val();
 var failedTest = document.querySelector (".failed-test");
 var highScoresEl = document.querySelector ("high-scores");
 var submitSocreEl = document.querySelector ("#submit-scores")
 var gameEl = document.getElementById('game')
 var saveBtn = document.getElementById('save-btn')
 var initialsInput = document.getElementById('initials-input')
+var correctAnswer = document.getElementById('correctAnswer')
 
 
 var currentQuestion;
@@ -88,16 +88,20 @@ function checkAnswer( ){
     if (questionCounter <= MAX_QUESTIONS) {
         getNewQuestion()
     };
+    }
 
-
-}
 
 function getNewQuestion () {
+    // startBtn.classList.add('hide')
     currentQuestion = questions[questionCounter]
     questionEl.textContent = ''
     console.log(currentQuestion)
     questionEl.textContent = currentQuestion.question
     let answers = currentQuestion.answers
+    let correctAnswer = currentQuestion.correctAnswer
+        if (useranswers === correctAnswer.dataset.correct)
+
+    // correctAnswer.setAttribute('color: green')
     gameEl.innerHTML = ''
     answers.forEach (answer => {
         let answerEl = document.createElement('div')
@@ -109,9 +113,8 @@ function getNewQuestion () {
         answerBtn.onclick = checkAnswer;
         answerEl.appendChild(answerBtn)
 
-    
-    });
-}
+    })
+};
 
 var timerCount = 100;
 
@@ -159,4 +162,4 @@ function saveScore(){
     
 }
 startBtn.addEventListener("click", startQuiz);
-saveBtn.addEventListener('click', saveScore)
+saveBtn.addEventListener('click', saveScore);
