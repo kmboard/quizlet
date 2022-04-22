@@ -1,8 +1,7 @@
 var questionEl = document.querySelector ("#questions");
-var answers = Array.from(document.querySelectorAll (".answers"));
+var answers = Array.from(document.querySelectorAll ("#answers"));
 var timerEl = document.querySelector(".timer-count");
 var startBtn = document.querySelector ("#start-btn");
-var useranswers = answers.querySelector.clicked.val();
 var failedTest = document.querySelector (".failed-test");
 var highScoresEl = document.querySelector ("high-scores");
 var submitSocreEl = document.querySelector ("#submit-scores")
@@ -12,6 +11,7 @@ var initialsInput = document.getElementById('initials-input')
 var correctAnswer = document.getElementById('correctAnswer')
 
 
+var timerInterval;
 var currentQuestion;
 var acceptingAnswers = true;
 var score = 0;
@@ -73,42 +73,45 @@ var questions = [
               
         ]
 
-const MAX_QUESTIONS = questions.length -1
+const MAX_QUESTIONS = questions.length
 
 
 function startQuiz () {
-    questionCounter = 0
+    questionCounter = 0;
     startTimer();
     getNewQuestion();
     console.log(availableQuestions);
 }
 
 function checkAnswer( ){
-    questionCounter++;
-    if (questionCounter <= MAX_QUESTIONS) {
-        getNewQuestion()
+    if (questions[questionCounter].correctAnswer != this.textContent) {
+        timerCount -= 10;
     };
+    questionCounter++;
+    if (questionCounter != MAX_QUESTIONS) {
+        getNewQuestion();
+    } else {
+        endTest();
+    }
+    
     }
 
 
 function getNewQuestion () {
-    // startBtn.classList.add('hide')
+    startBtn.classList.add('hidden');
     currentQuestion = questions[questionCounter]
     questionEl.textContent = ''
     console.log(currentQuestion)
     questionEl.textContent = currentQuestion.question
     let answers = currentQuestion.answers
-    let correctAnswer = currentQuestion.correctAnswer
-        if (useranswers === correctAnswer.dataset.correct)
-
-    // correctAnswer.setAttribute('color: green')
+    // let correctAnswer = currentQuestion.correctAnswer
     gameEl.innerHTML = ''
     answers.forEach (answer => {
         let answerEl = document.createElement('div')
         answerEl.setAttribute('class','choice-container justify-content')
         gameEl.appendChild(answerEl)
         let answerBtn = document.createElement('button');
-        answerBtn.setAttribute('class','choice-text justify-content');
+        answerBtn.setAttribute('class','choice-text justify-content', 'id');
         answerBtn.textContent = answer;
         answerBtn.onclick = checkAnswer;
         answerEl.appendChild(answerBtn)
@@ -119,21 +122,24 @@ function getNewQuestion () {
 var timerCount = 100;
 
 function startTimer() {
-    var timerInterval = setInterval(function() {
-        if (timerCount > 1) {
+     timerInterval = setInterval(function() {
         timerEl.textContent = timerCount + "time left";
         timerCount--;
-    } else if (timerCount > 0) {
-                clearInterval(timerInterval);
-                passTest();
+     if (timerCount <= 0) { 
+                endTest();
             }
-    else if (timerCount ===0) {
-            clearInterval(timerInterval);
-            sendMessage();
-     }
-
+   
     }, 1000);
 }
+
+function endTest () {
+   gameEl.classList.add('hidden');
+   questionEl.classList.add('hidden');
+   submitSocreEl.classList.remove('hidden')
+   clearInterval(timerInterval);
+}
+
+    
 // function passTest () {
 //     highScoresEl.addEventListener
 //     var quizUsers ="";
@@ -146,9 +152,8 @@ function startTimer() {
 //     window.alert(highScores);
 // }
 function saveScore(){
-    // get the value from initials input
     var initials = initialsInput.value.trim();
-    var score = 100;
+    var score = timerCount;
     // get the value of the score
     // put scores into newplayer object
     var newPlayer = {initials , score}
@@ -159,7 +164,9 @@ function saveScore(){
     localStorage.setItem('scores', JSON.stringify(savedScores))
     // create an array for the newplayer to go into or use already stored score
     // push updated array to local storage as JSON
+    initials.textContent = savedScores.appendChild("");
     
 }
 startBtn.addEventListener("click", startQuiz);
 saveBtn.addEventListener('click', saveScore);
+submitSocreEl.classList.add('hidden');

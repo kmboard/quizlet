@@ -1,41 +1,51 @@
-* * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-
-.container {
-    width: 100vw;
-    height: 55vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 80rem;
-    padding: 2rem;
-    border:lightskyblue;
-
-}
-
-.container > * {
-    width: 100%;
+body {
+    background-image: url("./images/Background15.jpg");
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 15px;
     margin: 2rem;
+    text-align: right;
+    vertical-align: middle;
+    color: red;
 }
 
-.flex-column {
+h2 {
+    font-size: 45px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+
+}
+
+.btn {
+    position: absolute;
+    top:50%;
+    background-color:#ffffff;
+    color: rgb(0, 21, 255);
+    font-size: large;
+    font-weight: bold;
+    border:none; 
+    border-radius:10px; 
+    padding:15px;
+    min-height:30px; 
+    min-width: 120px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+ .flex-column {
     display: flex;
     flex-direction: column;
-}
+    vertical-align: middle;
+} 
 
 .flex-center {
     justify-content: center;
     align-items: center;
+    vertical-align: middle;
 }
 
 .justify-center {
@@ -53,23 +63,49 @@ h1 {
 .contols {
     justify-content: center;
     align-items: center;
-}
+} 
 
-.btn {
-    font-size: 15px;
-    text-align: center;
-    border: blue solid 1px;
-    padding: .8rem;
-    border-radius: 8px;
-    color: rgb(255, 255, 255);
-    background-color: lightskyblue;
-    position: relative;
-    left: 45%;
-}
+a[answers] {
+      align-items: center;
+      appearance: none;
+      background-color: #FCFCFD;
+      border-radius: 4px;
+      border-width: 0;
+      box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #36395A;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: "JetBrains Mono",monospace;
+      height: 48px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      padding-left: 16px;
+      padding-right: 16px;
+      position: relative;
+      text-align: left;
+      text-decoration: none;
+      transition: box-shadow .15s,transform .15s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      will-change: box-shadow,transform;
+      font-size: 18px;
+    }
+    
+    a[answers]:focus {
+      box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
 
-.btn:hover {
-    cursor: pointer;
-    box-shadow: blue 0 0.2rem 0.2rem;
-    transform: scale(1.02);
-    transition: transform 100ms;
-}
+    a[answers]:hover {
+      box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+      transform: translateY(-2px);
+    }
+    
+    a[answers]:active {
+      box-shadow: #D6D6E7 0 3px 7px inset;
+      transform: translateY(2px);
+    }
