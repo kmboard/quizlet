@@ -1,5 +1,5 @@
 var questionEl = document.querySelector ("#questions");
-var answers = Array.from(document.querySelectorAll ("#answers"));
+var answers = Array.from(document.querySelectorAll (".answers"));
 var timerEl = document.querySelector(".timer-count");
 var startBtn = document.querySelector ("#start-btn");
 var failedTest = document.querySelector (".failed-test");
@@ -111,7 +111,7 @@ function getNewQuestion () {
         answerEl.setAttribute('class','choice-container justify-content')
         gameEl.appendChild(answerEl)
         let answerBtn = document.createElement('button');
-        answerBtn.setAttribute('class','choice-text justify-content', 'id');
+        answerBtn.setAttribute('class','choice-text justify-content', id='answerbtn');
         answerBtn.textContent = answer;
         answerBtn.onclick = checkAnswer;
         answerEl.appendChild(answerBtn)
@@ -164,7 +164,7 @@ function saveScore(){
     localStorage.setItem('scores', JSON.stringify(savedScores))
     // create an array for the newplayer to go into or use already stored score
     // push updated array to local storage as JSON
-    initials.textContent = savedScores.appendChild("");
+    // savedScores.innerHTML = textContent.value(initialsInput);
     
 }
 startBtn.addEventListener("click", startQuiz);

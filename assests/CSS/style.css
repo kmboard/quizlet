@@ -6,106 +6,58 @@ h1 {
     font-size: 15px;
     margin: 2rem;
     text-align: right;
-    vertical-align: middle;
     color: red;
 }
 
 h2 {
     font-size: 45px;
     text-align: center;
-    vertical-align: middle;
-    color: white;
+    color: rgb(0, 0, 0);
 
 }
 
 .btn {
-    position: absolute;
-    top:50%;
-    background-color:#ffffff;
-    color: rgb(0, 21, 255);
+    background-color:#fb0000;
+    color: rgb(255, 255, 255);
     font-size: large;
     font-weight: bold;
     border:none; 
     border-radius:10px; 
+    margin: auto;
     padding:15px;
     min-height:30px; 
     min-width: 120px;
-    align-items: center;
-    justify-content: center;
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
- .flex-column {
-    display: flex;
-    flex-direction: column;
-    vertical-align: middle;
-} 
-
-.flex-center {
-    justify-content: center;
+.container {
+    position: absolute;
+    justify-items: center;
     align-items: center;
-    vertical-align: middle;
+    width: 800px;
+    max-width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
-.justify-center {
-    justify-content: center;
-}
-
-.text-center {
-    text-align: center;
-}
 
 .hidden {
     display: none;
 }
 
-.contols {
-    justify-content: center;
-    align-items: center;
-} 
-
-a[answers] {
-      align-items: center;
-      appearance: none;
-      background-color: #FCFCFD;
-      border-radius: 4px;
-      border-width: 0;
-      box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-      box-sizing: border-box;
-      color: #36395A;
-      cursor: pointer;
-      display: inline-flex;
-      font-family: "JetBrains Mono",monospace;
-      height: 48px;
-      justify-content: center;
-      line-height: 1;
-      list-style: none;
-      overflow: hidden;
-      padding-left: 16px;
-      padding-right: 16px;
-      position: relative;
-      text-align: left;
-      text-decoration: none;
-      transition: box-shadow .15s,transform .15s;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      white-space: nowrap;
-      will-change: box-shadow,transform;
-      font-size: 18px;
-    }
-    
-    a[answers]:focus {
-      box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    }
-
-    a[answers]:hover {
-      box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-      transform: translateY(-2px);
-    }
-    
-    a[answers]:active {
-      box-shadow: #D6D6E7 0 3px 7px inset;
-      transform: translateY(2px);
-    }
+header {
+    font-size: 45px;
+    font-weight: bolder;
+    color: aqua;
+    text-align: center;
+    text-decoration: underline;
+}
