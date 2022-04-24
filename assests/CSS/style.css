@@ -61,3 +61,19 @@ header {
     text-align: center;
     text-decoration: underline;
 }
+
+#initialsInput {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    text-decoration: none;
+}
