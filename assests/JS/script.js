@@ -75,7 +75,6 @@ var questions = [
 
 const MAX_QUESTIONS = questions.length
 
-
 function startQuiz () {
     questionCounter = 0;
     startTimer();
@@ -94,8 +93,10 @@ function checkAnswer( ){
         endTest();
     }
     
-    }
+}
 
+// let answerBtn = document.querySelector('answers');
+// answerBtn.id = "answerBTn";
 
 function getNewQuestion () {
     startBtn.classList.add('hidden');
@@ -104,7 +105,6 @@ function getNewQuestion () {
     console.log(currentQuestion)
     questionEl.textContent = currentQuestion.question
     let answers = currentQuestion.answers
-    // let correctAnswer = currentQuestion.correctAnswer
     gameEl.innerHTML = ''
     answers.forEach (answer => {
         let answerEl = document.createElement('div')
@@ -135,38 +135,31 @@ function startTimer() {
 function endTest () {
    gameEl.classList.add('hidden');
    questionEl.classList.add('hidden');
-   submitSocreEl.classList.remove('hidden')
+   submitSocreEl.classList.remove('hidden');
    clearInterval(timerInterval);
 }
 
     
-// function passTest () {
-//     highScoresEl.addEventListener
-//     var quizUsers ="";
-//     var highScores = "";
-//     localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-
-//     for (var i=0; i < localStorage.length; i++) 
-//         var checkUserValue = [];
-    
-//     window.alert(highScores);
-// }
 function saveScore(){
     var initials = initialsInput.value.trim();
     var score = timerCount;
     // get the value of the score
     // put scores into newplayer object
     var newPlayer = {initials , score}
+    newPlayer.textContent.val('initials-list');
     var savedScores = JSON.parse(localStorage.getItem('scores')) || [] ; 
 
     savedScores.push(newPlayer)
     console.log(savedScores)
     localStorage.setItem('scores', JSON.stringify(savedScores))
+
+    // var initialslist = document.getElementById ("initialsInput").value;
+    //     document.getElementById("initials-list").innerHTML = initialslist;
+    };
     // create an array for the newplayer to go into or use already stored score
     // push updated array to local storage as JSON
-    // savedScores.innerHTML = textContent.value(initialsInput);
     
-}
-startBtn.addEventListener("click", startQuiz);
+
+startBtn.addEventListener('click', startQuiz);
 saveBtn.addEventListener('click', saveScore);
 submitSocreEl.classList.add('hidden');
