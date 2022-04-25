@@ -7,7 +7,7 @@ var highScoresEl = document.querySelector ("high-scores");
 var submitSocreEl = document.querySelector ("#submit-scores")
 var gameEl = document.getElementById('game')
 var saveBtn = document.getElementById('save-btn')
-var initialsInput = document.getElementById('initials-input')
+var initialsInput = document.getElementById('initialsInput')
 var correctAnswer = document.getElementById('correctAnswer')
 
 
@@ -111,7 +111,7 @@ function getNewQuestion () {
         answerEl.setAttribute('class','choice-container justify-content')
         gameEl.appendChild(answerEl)
         let answerBtn = document.createElement('button');
-        answerBtn.setAttribute('class','choice-text justify-content', id='answerbtn');
+        answerBtn.setAttribute('class','choice-text justify-content', 'id');
         answerBtn.textContent = answer;
         answerBtn.onclick = checkAnswer;
         answerEl.appendChild(answerBtn)
@@ -136,6 +136,7 @@ function endTest () {
    gameEl.classList.add('hidden');
    questionEl.classList.add('hidden');
    submitSocreEl.classList.remove('hidden');
+   saveBtn.addEventListener('click', saveScore);
    clearInterval(timerInterval);
 }
 
@@ -146,7 +147,7 @@ function saveScore(){
     // get the value of the score
     // put scores into newplayer object
     var newPlayer = {initials , score}
-    newPlayer.textContent.val('initials-list');
+    newPlayer.textContent.val('initialslist');
     var savedScores = JSON.parse(localStorage.getItem('scores')) || [] ; 
 
     savedScores.push(newPlayer)
@@ -159,7 +160,6 @@ function saveScore(){
     // create an array for the newplayer to go into or use already stored score
     // push updated array to local storage as JSON
     
-
-startBtn.addEventListener('click', startQuiz);
-saveBtn.addEventListener('click', saveScore);
 submitSocreEl.classList.add('hidden');
+startBtn.addEventListener('click', startQuiz);
+
