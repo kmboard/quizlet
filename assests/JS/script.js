@@ -4,7 +4,7 @@ var timerEl = document.querySelector(".timer-count");
 var startBtn = document.querySelector ("#start-btn");
 var failedTest = document.querySelector (".failed-test");
 var highScoresEl = document.querySelector ("high-scores");
-var submitSocreEl = document.querySelector ("#submit-scores")
+var submitScoreEl = document.querySelector ("#submit-scores")
 var gameEl = document.getElementById('game')
 var saveBtn = document.getElementById('save-btn')
 var initialsInput = document.getElementById('initialsInput')
@@ -80,6 +80,7 @@ function startQuiz () {
     startTimer();
     getNewQuestion();
     console.log(availableQuestions);
+    startBtn.classList.add('hidden');
 }
 
 function checkAnswer( ){
@@ -95,11 +96,7 @@ function checkAnswer( ){
     
 }
 
-// let answerBtn = document.querySelector('answers');
-// answerBtn.id = "answerBTn";
-
 function getNewQuestion () {
-    startBtn.classList.add('hidden');
     currentQuestion = questions[questionCounter]
     questionEl.textContent = ''
     console.log(currentQuestion)
@@ -135,7 +132,7 @@ function startTimer() {
 function endTest () {
    gameEl.classList.add('hidden');
    questionEl.classList.add('hidden');
-   submitSocreEl.classList.remove('hidden');
+   submitScoreEl.classList.remove('hidden');
    saveBtn.addEventListener('click', saveScore);
    clearInterval(timerInterval);
 }
@@ -143,23 +140,22 @@ function endTest () {
     
 function saveScore(){
     var initials = initialsInput.value.trim();
+    if(initials){
     var score = timerCount;
     // get the value of the score
     // put scores into newplayer object
     var newPlayer = {initials , score}
-    newPlayer.textContent.val('initialslist');
     var savedScores = JSON.parse(localStorage.getItem('scores')) || [] ; 
-
     savedScores.push(newPlayer)
     console.log(savedScores)
     localStorage.setItem('scores', JSON.stringify(savedScores))
+    window.location.href = './highscores.html'
+} else {
+alert('Please Submit Initials')
+}
 
-    // var initialslist = document.getElementById ("initialsInput").value;
-    //     document.getElementById("initials-list").innerHTML = initialslist;
-    };
-    // create an array for the newplayer to go into or use already stored score
-    // push updated array to local storage as JSON
-    
-submitSocreEl.classList.add('hidden');
+};
+
+submitScoreEl.classList.add('hidden');
 startBtn.addEventListener('click', startQuiz);
 
