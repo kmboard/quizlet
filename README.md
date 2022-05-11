@@ -33,5 +33,5 @@ https://kmboard.github.io/quizlet/
 
 ## Screenshots
 
-./images/Quiz 1.png
-./images/Quiz 2.png
+../images/quiz1.png
+../images/quiz2.png
